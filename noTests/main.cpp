@@ -2,8 +2,8 @@
 #include <string>
 #include <cmath>
 #include <sstream>
-#include "Item.h"
-#include "Receipt.h"
+#include "./src/Item.h"
+#include "./src/Receipt.h"
 
 int main()
 {

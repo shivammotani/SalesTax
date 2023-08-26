@@ -3,8 +3,8 @@
 #include <vector>
 #include <string>
 #include <iomanip>
-#include "Item.h"
-#include "Receipt.h"
+#include "./Headers/Item.h"
+#include "./Headers/Receipt.h"
 
 Receipt::Receipt(){};
 
