@@ -9,7 +9,7 @@ int main()
 {
 
         int totalItems, counter = 1;
-        Receipt purchasedItems; // Create a Receipt object to store purchased items
+        Receipt purchasedItems;
         std::cout << "Enter total items: ";
         std::cin >> totalItems;
 
@@ -18,11 +18,11 @@ int main()
         {
                 std::cout << counter << ". ";
                 std::string itemString;
-                std::getline(std::cin >> std::ws, itemString); // Read the item description string
+                std::getline(std::cin >> std::ws, itemString);
                 Item entry(itemString);
                 try
                 {
-                        purchasedItems.addItem(entry); // Add the item to the receipt
+                        purchasedItems.addItem(entry);
                         --totalItems;
                         ++counter;
                 }
@@ -32,8 +32,6 @@ int main()
                 }
         }
         std::cout << "END " << std::endl;
-
-        // Print the receipt with item details, taxes, and total cost
         purchasedItems.printReceipt();
 
         return 0;

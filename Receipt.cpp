@@ -1,33 +1,27 @@
 #include <vector>
 #include <iostream>
+#include <vector>
 #include <string>
 #include <iomanip>
 #include "Item.h"
 #include "Receipt.h"
 
-// Default constructor for the Receipt class
 Receipt::Receipt(){};
 
-// Member function to add an item to the receipt
 void Receipt::addItem(const Item &item)
 {
         if (item.isValid())
         {
-                // Add the valid item to the items vector
                 items.emplace_back(item);
-
-                // Update totalTax and totalCost based on the added item
                 totalTax += item.calculateSalesTax();
                 totalCost += item.getTotalPrice();
         }
         else
         {
-                // If the item is invalid, throw an exception with a message
-                throw std::invalid_argument("Invalid item.");
+                throw std::invalid_argument("Invalid item."); // Add exception
         }
 }
 
-// Member function to print the receipt
 void Receipt::printReceipt() const
 {
         int counter = 1;
