@@ -8,7 +8,7 @@
 int main()
 {
 
-        int totalItems, counter = 1;
+        int counter = 1;
         Receipt purchasedItems;
         std::cout << "Enter the items below. Enter 'quit' to print Receipt" << std::endl;
         while (true)
@@ -22,7 +22,6 @@ int main()
                 try
                 {
                         purchasedItems.addItem(entry);
-                        --totalItems;
                         ++counter;
                 }
                 catch (const std::invalid_argument &e)
