@@ -18,7 +18,7 @@ SanitizeUserInput::SanitizeUserInput(const std::string& itemDescription) {
         }
         itemName += keyword + " ";
     }
-    itemName.pop_back(); // Remove trailing space
+    if(itemName.length() > 0) itemName.pop_back(); // Remove trailing space
     determineTaxStatus();
     if (price == -1 || quantity == -1)
     {

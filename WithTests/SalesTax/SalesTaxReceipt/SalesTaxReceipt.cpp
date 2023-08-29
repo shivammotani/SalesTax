@@ -24,12 +24,17 @@ int main()
         if (itemString == "quit")
             break;
         SanitizeUserInput checkUserInput(itemString);
-        if (checkUserInput.isStringCorrect()) {
-            Item newItem(checkUserInput.getQuantity(), checkUserInput.getPrice(), checkUserInput.getItemName(), checkUserInput.getIsImported(), checkUserInput.getIsExempt());
-            purchasedItems.addItem(newItem);
-            ++counter;
+        try {
+            if (checkUserInput.isStringCorrect()) {
+                Item newItem(checkUserInput.getQuantity(), checkUserInput.getPrice(), checkUserInput.getItemName(), checkUserInput.getIsImported(), checkUserInput.getIsExempt());
+                purchasedItems.addItem(newItem);
+                ++counter;
+            }
+            else {
+                std::cout << "Input String is invalid. Kindly re-enter" << std::endl;
+            }
         }
-        else {
+        catch (const std::invalid_argument& e){
             std::cout << "Input String is invalid. Kindly re-enter" << std::endl;
         }
     }

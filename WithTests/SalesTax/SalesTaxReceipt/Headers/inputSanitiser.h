@@ -18,7 +18,7 @@ public:
 private:
     int quantity = -1;
     double price = -1;
-    std::string itemName;
+    std::string itemName = "";
     bool isValid = true;
     bool isImported = false;
     bool isExempt = false;
