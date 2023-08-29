@@ -1,16 +1,17 @@
 #include "pch.h"
-#include "D:\Other\Codes\Projects\SalesTax\SalesTaxReceipt\Item.cpp"
-#include "D:\Other\Codes\Projects\SalesTax\SalesTaxReceipt\Receipt.cpp"
-
+#include "../SalesTaxReceipt/item.cpp"
+#include "../SalesTaxReceipt/cart.cpp"
+#include "../SalesTaxReceipt/receiptPrinter.cpp"
+#include "../SalesTaxReceipt/calculateTax.cpp"
 
 TEST(TestItemIsValid, TestName1)
 {
 
-    Receipt purchasedItems;
-
-    Item item1("1 book at 12.49");
-    Item item2("1 music CD at 14.99");
-    Item item3("1 chocolate bar at 0.85");
+    Cart purchasedItems;
+    ReceiptPrinter printer;
+    Item item1(1, 12.49, "book", false, true);
+    Item item2(1, 14.99, "music CD", false, false);
+    Item item3(1, 0.85, "chocolate bar", false, true);
 
     purchasedItems.addItem(item1);
     purchasedItems.addItem(item2);
@@ -26,7 +27,7 @@ TEST(TestItemIsValid, TestName1)
     std::ostringstream capturedOutput;
     std::streambuf* originalOutput = std::cout.rdbuf();
     std::cout.rdbuf(capturedOutput.rdbuf());
-    purchasedItems.printReceipt();
+    printer.printReceipt(purchasedItems);
 
     ASSERT_EQ(output, capturedOutput.str());
     std::cout.rdbuf(originalOutput);
@@ -35,10 +36,11 @@ TEST(TestItemIsValid, TestName1)
 TEST(TestItemIsValid, TestName2)
 {
 
-    Receipt purchasedItems;
+    Cart purchasedItems;
+    ReceiptPrinter printer;
 
-    Item item1("1 imported box of chocolates at 10.00");
-    Item item2("1 imported bottle of perfume at 47.50");
+    Item item1(1, 10.00, "imported box of chocolates", true, true);
+    Item item2(1, 47.50, "imported bottle of perfume", true, false);
 
     purchasedItems.addItem(item1);
     purchasedItems.addItem(item2);
@@ -52,7 +54,7 @@ TEST(TestItemIsValid, TestName2)
     std::ostringstream capturedOutput;
     std::streambuf* originalOutput = std::cout.rdbuf();
     std::cout.rdbuf(capturedOutput.rdbuf());
-    purchasedItems.printReceipt();
+    printer.printReceipt(purchasedItems);
 
     ASSERT_EQ(output, capturedOutput.str());
     std::cout.rdbuf(originalOutput);
@@ -61,14 +63,14 @@ TEST(TestItemIsValid, TestName2)
 TEST(TestItemIsValid, TestName3)
 {
 
-    Receipt purchasedItems;
+    Cart purchasedItems;
+    ReceiptPrinter printer;
 
-    Item item1("1 imported bottle of perfume at 27.99");
-    Item item2("1 bottle of perfume at 18.99");
-    Item item3("1 packet of headache pills at 9.75");
-    Item item4("1 box of imported chocolates at 11.25");
+    Item item1(1, 27.99, "imported bottle of perfume", true, false);
+    Item item2(1, 18.99, "bottle of perfume", false, false);
+    Item item3(1, 9.75, "packet of headache pills", false, true);
+    Item item4(1, 11.25, "box of imported chocolates", true, true);
 
- 
     purchasedItems.addItem(item1);
     purchasedItems.addItem(item2);
     purchasedItems.addItem(item3);
@@ -85,7 +87,7 @@ TEST(TestItemIsValid, TestName3)
     std::ostringstream capturedOutput;
     std::streambuf* originalOutput = std::cout.rdbuf();
     std::cout.rdbuf(capturedOutput.rdbuf());
-    purchasedItems.printReceipt();
+    printer.printReceipt(purchasedItems);
 
     ASSERT_EQ(output, capturedOutput.str());
     std::cout.rdbuf(originalOutput);
@@ -95,10 +97,12 @@ TEST(TestItemIsValid, TestName3)
 TEST(TestItemIsValid, TestName4)
 {
 
-    Receipt purchasedItems;
+    Cart purchasedItems;
+    ReceiptPrinter printer;
 
-    Item item1("2 box of chocolates at 10.00");
-    Item item2("1 imported bottle of perfume at 47.50");
+    Item item1(2, 10.00, "box of chocolates", false, true);
+    Item item2(1, 47.50, "imported bottle of perfume", true, false);
+
 
     purchasedItems.addItem(item1);
     purchasedItems.addItem(item2);
@@ -112,7 +116,7 @@ TEST(TestItemIsValid, TestName4)
     std::ostringstream capturedOutput;
     std::streambuf* originalOutput = std::cout.rdbuf();
     std::cout.rdbuf(capturedOutput.rdbuf());
-    purchasedItems.printReceipt();
+    printer.printReceipt(purchasedItems);
 
     ASSERT_EQ(output, capturedOutput.str());
     std::cout.rdbuf(originalOutput);

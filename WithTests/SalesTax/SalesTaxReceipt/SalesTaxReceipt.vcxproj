@@ -127,13 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Item.cpp" />
-    <ClCompile Include="Receipt.cpp" />
-    <ClCompile Include="SalesTaxReceipt.cpp" />
+    <ClCompile Include="calculateTax.cpp" />
+    <ClCompile Include="inputSanitizer.cpp" />
+    <ClCompile Include="item.cpp" />
+    <ClCompile Include="cart.cpp" />
+    <ClCompile Include="receiptPrinter.cpp" />
+    <ClCompile Include="salesTaxReceipt.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Headers\Item.h" />
-    <ClInclude Include="Headers\Receipt.h" />
+    <ClInclude Include="Headers\calculateTax.h" />
+    <ClInclude Include="Headers\inputSanitiser.h" />
+    <ClInclude Include="Headers\item.h" />
+    <ClInclude Include="Headers\cart.h" />
+    <ClInclude Include="Headers\receiptPrinter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

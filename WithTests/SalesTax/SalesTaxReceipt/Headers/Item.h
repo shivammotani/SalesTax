@@ -5,29 +5,22 @@
 #include <string>
 
 
-    class Item
-    {
-    public:
-        Item(const std::string& itemDescription);
-        bool isValid() const;
-        void printItem() const;
-        double calculateSalesTax() const;
-        double getTotalPrice() const;
+class Item
+{
+public:
+    Item(const int quantity, const double price, const std::string& itemName, bool isImported, bool isExempt);
+    int getQuantity() const;
+    double getPrice() const;
+    std::string getItemName() const;
+    double getIsImported() const;
+    double getIsExempt() const;
 
-    public:
-        int quantity = -1;
-        double price = -1;
-        bool isImported = false;
-        bool isExempt = false;
-        bool isStringValid = true;
-        std::string itemName;
-        std::vector<std::string> exemptionList{ "food", "chocolate", "book", "medical", "pill", "medicine", "sandwich", "pizza" };
-
-        void parseItemDescription(const std::string& itemDescription);
-
-        void determineTaxStatus();
-
-        double roundUpToNearest5Cents(double amount) const;
-    };
+private:
+    int quantity = -1;
+    double price = -1;
+    std::string itemName;
+    bool isImported = false;
+    bool isExempt = false;        
+};
 
 #endif
